@@ -1,1 +1,1 @@
-# serverless_framework_javascript
+# Serverless Framework Javascript
