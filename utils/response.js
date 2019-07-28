@@ -9,5 +9,14 @@ function buildResponse(body, statusCode) {
   };
 }
 
-module.exports.success = (body, statusCode = 200) => buildResponse(body, statusCode);
-module.exports.failure = (body, statusCode = 500) => buildResponse(body, statusCode);
+module.exports.errors = (error) => {
+  const statusCode = error.statusCode || 500;
+  const message = new Error(
+    error.response
+      ? error.response.data.message || error.response.data
+      : error.message || error,
+  );
+  return buildResponse(message, statusCode);
+};
+module.exports.failure = (data, statusCode = 400) => buildResponse(data, statusCode);
+module.exports.success = (data, statusCode = 200) => buildResponse(data, statusCode);

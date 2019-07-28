@@ -1,5 +1,7 @@
 service: serverless-framework-javascript # NOTE: update this with your service name
 
+frameworkVersion: ">=1.4.0 <2.0.0"
+
 provider:
   name: aws
   runtime: nodejs10.16
